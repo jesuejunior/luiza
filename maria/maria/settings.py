@@ -169,8 +169,12 @@ LOGGING = {
 }
 
 REST_FRAMEWORK = {
+    'DEFAULT_PARSER_CLASSES': (
+        'toolbox.parsers.JSParser',
+    ),
     'DEFAULT_RENDERER_CLASSES': (
-        'rest_framework.renderers.JSONRenderer',
+        'toolbox.renderers.JSRenderer',
+        # 'rest_framework.renderers.JSONRenderer',
         # 'rest_framework_jsonp.renderers.JSONPRenderer',
     ),
     'PAGINATE_BY': 25

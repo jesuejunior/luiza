@@ -39,7 +39,7 @@ class EmployeeApiTest:
             "department": "mobile",
         }
         response = self.client.post('/employee/', data=json.dumps(data),
-                                    content_type='application/json')
+                                    content_type='application/javascript')
         assert response.status_code == 201
 
     def test_create_employee_with_wrong_data(self):
@@ -48,7 +48,7 @@ class EmployeeApiTest:
             "department": "mobile",
         }
         response = self.client.post('/employee/', data=json.dumps(data),
-                                    content_type='application/json')
+                                    content_type='application/javascript')
         assert response.status_code == 400
 
     def test_email_exist_return_error(self):
@@ -60,7 +60,7 @@ class EmployeeApiTest:
         }
 
         response = self.client.post('/employee/', data=json.dumps(data),
-                                    content_type='application/json')
+                                    content_type='application/javascript')
         assert response.status_code == 400
         assert response.data.get('message') == u'E-mail already exists'
 
@@ -71,7 +71,7 @@ class EmployeeApiTest:
             "department": "mobile",
         }
         self.client.post('/employee/', data=json.dumps(data),
-                         content_type='application/json')
+                         content_type='application/javascript')
         employee = Employee.objects.get(email='joao@silva.org')
 
         assert employee.name == u'João da Silva'
@@ -79,23 +79,23 @@ class EmployeeApiTest:
         assert employee.department == 'mobile'
 
     def test_list_empty_employees(self):
-        response = self.client.get('/employee/', content_type='application/json')
+        response = self.client.get('/employee/', content_type='application/javascript')
         assert response.data == []
 
     def test_list_with_some_employees(self):
         mommy.make_many(Employee, 5)
-        response = self.client.get('/employee/', content_type='application/json')
+        response = self.client.get('/employee/', content_type='application/javascript')
         assert len(response.data) == 5
 
     def test_delete_employee(self):
         mommy.make_one(Employee, id=1)
         mommy.make_many(Employee, 5)
-        response = self.client.delete('/employee/1', content_type='application/json')
+        response = self.client.delete('/employee/1', content_type='application/javascript')
         assert response.status_code == 204
 
     def test_try_delete_employee_not_found(self):
         mommy.make_many(Employee, 5)
-        response = self.client.delete('/employee/1', content_type='application/json')
+        response = self.client.delete('/employee/1234', content_type='application/javascript')
         assert response.status_code == 204
 
     def test_delete_employee_check_in_db(self):
@@ -104,6 +104,6 @@ class EmployeeApiTest:
 
         assert Employee.objects.count() == 6
 
-        self.client.delete('/employee/1', content_type='application/json')
+        self.client.delete('/employee/1', content_type='application/javascript')
 
         assert Employee.objects.count() == 5
