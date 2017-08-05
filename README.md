@@ -25,7 +25,7 @@ The endpoint support GET(list) POST(add) DELETE(remove)
 status: 200
 
 ```shell
-    $ curl -i http://127.0.0.1:8000/employee/
+    $ curl -i -H "Content-Type: application/javascript" http://127.0.0.1:8000/employee/
 ```
 
 *POST*
@@ -33,7 +33,7 @@ status: 200
 status: 201
 
 ```shell
-    $ curl -i -X POST -d '{"name": "João da Silva", "email": "joao@silva.org", "department": "mobile"}' -H "Content-Type: application/json"  http://127.0.0.1:8000/employee/
+    $ curl -i -X POST -d '{"name": "João da Silva", "email": "joao@silva.org", "department": "mobile"}' -H "Content-Type: application/json"  -H "Content-Type: application/javascript" http://127.0.0.1:8000/employee/
 ```
 
 *DELETE*
@@ -41,7 +41,7 @@ status: 201
 status: 204
 
 ```shell
-    $ curl -i -X DELETE http://127.0.0.1:8000/employee/1
+    $ curl -i -X DELETE -H "Content-Type: application/javascript" http://127.0.0.1:8000/employee/1
 ```
 
 
