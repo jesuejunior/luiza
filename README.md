@@ -26,7 +26,7 @@ Create your virtualenv then run it
     $ python maria/manage.py createsuperuser
 ```
 
-then you be happy :)
+then you'll be happy :)
 
 The endpoint support GET(list) POST(add) DELETE(remove)
 
@@ -43,7 +43,7 @@ status: 200
 status: 201
 
 ```shell
-    $ curl -i -X POST -d '{"name": "João da Silva", "email": "joao@silva.org", "department": "mobile"}' -H "Content-Type: application/json"  -H "Content-Type: application/javascript" http://127.0.0.1:8000/employee/
+    $ curl -i -X POST -d '{"name": "João da Silva", "email": "joao@silva.org", "department": "mobile"}' -H "Content-Type: application/javascript" http://127.0.0.1:8000/employee/
 ```
 
 *DELETE*
@@ -66,7 +66,8 @@ Execute test inside of your virtualenv
 For a manually test, you could see Makefile to get step-by-step
 
 ### Production
-
+    
+    * Run collectstatic and set envvar such as in the dockerfile 
 
 For next steps see COMMENTS.md
 
