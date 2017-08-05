@@ -18,6 +18,16 @@ Create your virtualenv then run it
     $ make dev
 ```
 
+- Don't forget to create a superuser to able to access admin interface on http://127.0.0.1:8000/admin
+
+- Run the follow command and fill the steps-by-step
+
+```shell
+    $ python maria/manage.py createsuperuser
+```
+
+then you be happy :)
+
 The endpoint support GET(list) POST(add) DELETE(remove)
 
 *GET*
@@ -54,6 +64,8 @@ Execute test inside of your virtualenv
 ```
 
 For a manually test, you could see Makefile to get step-by-step
+
+### Production
 
 
 For next steps see COMMENTS.md

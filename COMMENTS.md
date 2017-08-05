@@ -28,4 +28,11 @@
 
     Outro ponto é, usar JSONP não é recomendado para outros verbos além de GET.
 
+* Para JSON:
+
+    *The MIME media type for JSON text is application/json. The default encoding is UTF-8. (Source: RFC 4627).*
+
+* Para JSONP com callback:
+    *application/javascript*
+
 * Implementaria a tag de covarage, pois hoje está em 98% de cobertura.
