@@ -50,26 +50,9 @@ class EmployeeDetailView(APIView):
         Retrieve, update or delete a employee instance.
     """
 
-    def get_object(self, pk):
-        try:
-            return Employee.objects.get(pk=pk)
-        except Employee.DoesNotExist:
-            raise Http404
-
-    # def get(self, request, pk, format=None):
-    #     employee = self.get_object(pk)
-    #     serializer = EmployeeSerializer(employee)
-    #     return Response(serializer.data)
-
-    # def put(self, request, pk, format=None):
-    #     employee = self.get_object(pk)
-    #     serializer = EmployeeSerializer(employee, data=request.data)
-    #     if serializer.is_valid():
-    #         serializer.save()
-    #         return Response(serializer.data)
-    #     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
     def delete(self, request, pk, format=None):
-        employee = self.get_object(pk)
-        employee.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+        try:
+            employee = Employee.objects.get(pk=pk)
+            employee.delete()
+        finally:
+            return Response(status=status.HTTP_204_NO_CONTENT)
