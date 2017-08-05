@@ -5,6 +5,7 @@
 *.md
 .coverage
 *.log
+/static/collect/*
 test
 *.*.*.test*
 .vagrant

@@ -21,7 +21,8 @@ RUN pip install --upgrade pip \
     )" \
     && apk add --virtual .rundeps $runDeps
 
-RUN python3 manage.py migrate
+RUN python3 manage.py migrate \
+    && python3 manage.py collectstatic --noinput
 
 EXPOSE 8000
 
